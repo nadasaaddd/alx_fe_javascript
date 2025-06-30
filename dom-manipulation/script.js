@@ -27,7 +27,7 @@ const newbutton = document.getElementById("newQuote");
 newbutton.addEventListener("click", showRandomQuote);
 
 // add new quote
-function addQuote() {
+function createAddQuoteForm() {
   const newQuoteText = document.getElementById("newQuoteText").value.trim();
   const newCat = document.getElementById("newQuoteCategory").value.trim();
 
@@ -45,4 +45,6 @@ function addQuote() {
       "❌ Please enter both text and category.";
   }
 }
-document.getElementById("addQuote").addEventListener("click", addQuote);
+document
+  .getElementById("addQuote")
+  .addEventListener("click", createAddQuoteForm);
