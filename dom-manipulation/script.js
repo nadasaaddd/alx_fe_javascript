@@ -30,6 +30,9 @@ newbutton.addEventListener("click", showRandomQuote);
 function createAddQuoteForm() {
   const newQuoteText = document.getElementById("newQuoteText").value.trim();
   const newCat = document.getElementById("newQuoteCategory").value.trim();
+  const status = document.getElementById("status");
+  const statText = document.createElement("p");
+  status.appendChild(statText);
 
   if (newQuoteText && newCat) {
     const newQuote = {
@@ -37,12 +40,11 @@ function createAddQuoteForm() {
       category: newCat,
     };
     quotes.push(newQuote);
-    document.getElementById("status").innerText = "✅ Quote added!";
+    statText.textContent = "✅ Quote added!";
     newQuoteText.value = "";
     newCat.value = "";
   } else {
-    document.getElementById("status").innerText =
-      "❌ Please enter both text and category.";
+    statText.textContent = "❌ Please enter both text and category.";
   }
 }
 document
