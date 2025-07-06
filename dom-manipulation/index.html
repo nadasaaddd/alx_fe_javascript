@@ -1,32 +1,26 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Dynamic Quote Generator</title>
-  </head>
+<head>
+  <meta charset="UTF-8" />
+  <title>Quote Filter App</title>
+</head>
+<body>
 
-  <body>
-    <h1>Dynamic Quote Generator</h1>
-    <div id="quoteDisplay"></div>
-    <button id="newQuote">Show New Quote</button>
+  <h1>Dynamic Quote Generator</h1>
 
-    <div>
-      <input id="newQuoteText" type="text" placeholder="Enter a new quote" />
-      <input
-        id="newQuoteCategory"
-        type="text"
-        placeholder="Enter quote category"
-      />
-      <button id="addQuote">Add Quote</button>
-      <div id="status"></div>
-    </div>
-     <hr />
-  <h3>Import/Export Quotes</h3>
-  <input type="file" id="importFile" accept=".json" />
-  <button id="exportBtn">Export Quotes</button>
-  <a id="downloadLink" style="display:none">Download JSON</a>
+  <!-- Category Filter -->
+  <label for="categoryFilter">Filter by category:</label>
+  <select id="categoryFilter"></select>
 
-    <script src="./script.js"></script>
-  </body>
+  <!-- Displayed Quotes -->
+  <div id="quoteDisplay"></div>
+
+  <!-- Add New Quote -->
+  <input id="newQuoteText" type="text" placeholder="Enter quote" />
+  <input id="newQuoteCategory" type="text" placeholder="Enter category" />
+  <button id="addQuote">Add Quote</button>
+  <div id="status"></div>
+
+  <script src="script.js"></script>
+</body>
 </html>
