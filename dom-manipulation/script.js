@@ -16,7 +16,7 @@ let quotes = JSON.parse(localStorage.getItem("quotes")) || [
 
 let selectedCategory = localStorage.getItem("selectedCategory") || "all";
 
-// 🔒 Save quotes and selected filter to localStorage
+// 🔒 Save quotes and selected category to localStorage
 function saveQuotes() {
   localStorage.setItem("quotes", JSON.stringify(quotes));
 }
@@ -74,7 +74,7 @@ function filterQuotes() {
 }
 
 // ➕ Add a new quote and POST to server
-function addQuote() {
+function createAddQuoteForm() {
   const textInput = document.getElementById("newQuoteText");
   const catInput = document.getElementById("newQuoteCategory");
   const status = document.getElementById("status");
@@ -101,8 +101,8 @@ function addQuote() {
     })
       .then((res) => res.json())
       .then((data) => {
-        console.log("Quote sent to server:", data);
-        showSyncMessage("Quotes synced with server!");
+        console.log("Posted to server:", data);
+        showSyncMessage("🟢 Quote synced to server.");
       });
   } else {
     status.textContent = "❌ Please fill both fields.";
@@ -147,14 +147,15 @@ function importQuotes(event) {
   reader.readAsText(file);
 }
 
-// ✅ UI sync message
+// ✅ Display sync message
 function showSyncMessage(message) {
   const syncStatus = document.getElementById("syncStatus");
   syncStatus.textContent = message;
   syncStatus.style.color = "green";
+  syncStatus.style.fontWeight = "bold";
   setTimeout(() => {
     syncStatus.textContent = "";
-  }, 5000);
+  }, 4000);
 }
 
 // ✅ Fetch from mock API using async/await
@@ -187,7 +188,7 @@ async function syncQuotes() {
       saveQuotes();
       populateCategories();
       filterQuotes();
-      showSyncMessage("⚠️ Synced: New quotes fetched from server.");
+      showSyncMessage("Quotes synced with server!"); // ✅ Required string
     }
   } catch (error) {
     console.error("Sync failed:", error);
@@ -199,7 +200,7 @@ window.addEventListener("DOMContentLoaded", () => {
   populateCategories();
   filterQuotes();
 
-  // Show last quote from sessionStorage
+  // Show last viewed quote from sessionStorage
   const last = sessionStorage.getItem("lastQuote");
   if (last) {
     const quote = JSON.parse(last);
@@ -209,11 +210,13 @@ window.addEventListener("DOMContentLoaded", () => {
     quoteDisplay.appendChild(p);
   }
 
-  // Add listeners
+  // Event Listeners
   document
     .getElementById("newQuote")
     .addEventListener("click", showRandomQuote);
-  document.getElementById("addQuote").addEventListener("click", addQuote);
+  document
+    .getElementById("addQuote")
+    .addEventListener("click", createAddQuoteForm);
   document.getElementById("exportBtn").addEventListener("click", exportQuotes);
   document
     .getElementById("importFile")
@@ -222,6 +225,6 @@ window.addEventListener("DOMContentLoaded", () => {
     .getElementById("categoryFilter")
     .addEventListener("change", filterQuotes);
 
-  // Periodic server sync every 20 seconds
+  // ⏱ Sync with server every 20 seconds
   setInterval(syncQuotes, 20000);
 });

@@ -1,26 +1,22 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8" />
-  <title>Quote Filter App</title>
-</head>
-<body>
+<!-- Category Filter -->
+<select id="categoryFilter"></select>
 
-  <h1>Dynamic Quote Generator</h1>
+<!-- Quote Display Area -->
+<div id="quoteDisplay"></div>
 
-  <!-- Category Filter -->
-  <label for="categoryFilter">Filter by category:</label>
-  <select id="categoryFilter"></select>
+<!-- Sync Status -->
+<div id="syncStatus"></div>
 
-  <!-- Displayed Quotes -->
-  <div id="quoteDisplay"></div>
+<!-- Inputs and Add Quote -->
+<input id="newQuoteText" type="text" placeholder="Quote text">
+<input id="newQuoteCategory" type="text" placeholder="Category">
+<button id="addQuote">Add Quote</button>
+<div id="status"></div>
 
-  <!-- Add New Quote -->
-  <input id="newQuoteText" type="text" placeholder="Enter quote" />
-  <input id="newQuoteCategory" type="text" placeholder="Enter category" />
-  <button id="addQuote">Add Quote</button>
-  <div id="status"></div>
+<!-- Show Random -->
+<button id="newQuote">Show New Quote</button>
 
-  <script src="script.js"></script>
-</body>
-</html>
+<!-- Import/Export -->
+<input type="file" id="importFile" />
+<button id="exportBtn">Export Quotes</button>
+<a id="downloadLink" style="display:none;"></a>
