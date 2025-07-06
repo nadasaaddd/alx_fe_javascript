@@ -102,7 +102,7 @@ function addQuote() {
       .then((res) => res.json())
       .then((data) => {
         console.log("Quote sent to server:", data);
-        showSyncMessage("🟢 Quote synced to server.");
+        showSyncMessage("Quotes synced with server!");
       });
   } else {
     status.textContent = "❌ Please fill both fields.";
